@@ -37,7 +37,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Piscibus\\Notifier\\Tests": "tests"
+            "Piscibus\\Notifier\\Tests\\": "tests"
         }
     },
     "scripts": {

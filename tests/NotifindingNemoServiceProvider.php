@@ -3,7 +3,6 @@
 namespace Piscibus\Notifier;
 
 use Illuminate\Support\ServiceProvider;
-use Piscibus\Notifier\Commands\SkeletonCommand;
 
 class NotifindingNemoServiceProvider extends ServiceProvider
 {

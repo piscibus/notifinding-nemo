@@ -18,5 +18,9 @@ class NotifindingNemoServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/notifier.php', 'notifier');
+
+        $this->app->bind('notifier', function () {
+            return new Notifier();
+        });
     }
 }

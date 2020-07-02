@@ -27,6 +27,7 @@ class Notifier
                 throw new NotifindingNemoCollectionNotFound($resource);
         }
         $this->resources[] = $resource;
+
         return $this;
     }
 

@@ -59,7 +59,6 @@ class FcmClientTest extends TestCase
         $recipients = [self::FCM_TOKEN_1, self::FCM_TOKEN_2];
 
         $response = FcmClient::sendMessage($recipients, $title, $body);
-        ;
         $this->assertEquals(200, $response->getStatusCode());
     }
 }

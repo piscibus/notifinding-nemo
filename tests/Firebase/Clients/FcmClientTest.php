@@ -58,7 +58,7 @@ class FcmClientTest extends TestCase
         $body = 'You think Escobar was bad. Wait until you meet these guys';
         $recipients = [self::FCM_TOKEN_1, self::FCM_TOKEN_2];
 
-        $response = FcmClient::sendMessage($recipients, $title, $body);
+        $response = FcmClient::sendMessage($recipients, $title, $body);;
         $this->assertEquals(200, $response->getStatusCode());
     }
 }

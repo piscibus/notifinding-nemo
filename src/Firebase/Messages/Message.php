@@ -49,11 +49,12 @@ class Message implements MessageInterface
      */
     public function toArray(): array
     {
-        return [
+        $body = [
             'registration_ids' => $this->registrationIds,
             'priority' => $this->priority,
             'data' => $this->payload->getData(),
             'notification' => $this->payload->getNotification()->toArray()
         ];
+        return compact('body');
     }
 }

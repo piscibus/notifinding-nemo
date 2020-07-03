@@ -5,14 +5,14 @@ namespace Piscibus\Notifier\Tests\Firebase\Payloads;
 use Faker\Factory;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-use Piscibus\Notifier\Firebase\Payloads\AndroidPayload;
+use Piscibus\Notifier\Firebase\Payloads\Payload;
 use Piscibus\Notifier\Tests\TestCase;
 
 /**
- * Class AndroidPayloadTest
+ * Class PayloadTest
  * @package Piscibus\Notifier\Tests\Firebase\Messages
  */
-class AndroidPayloadTest extends TestCase
+class PayloadTest extends TestCase
 {
     /**
      * @var Faker
@@ -36,11 +36,15 @@ class AndroidPayloadTest extends TestCase
         $title = $this->faker->realText(30);
         $body = $this->faker->realText(60);
         $body_loc_key = Str::slug($this->faker->text(10));
+        $android_channel_id = 'nemo.channel';
 
-        $notification = new AndroidPayload();
-        $notification->setTitle($title)->setBody($body)->setBodyLocKey($body_loc_key);
+        $notification = new Payload();
+        $notification->setTitle($title)
+            ->setBody($body)
+            ->setBodyLocKey($body_loc_key)
+            ->setAndroidChannelId($android_channel_id);
 
-        $expected = compact('title', 'body', 'body_loc_key');
+        $expected = compact('title', 'body', 'body_loc_key', 'android_channel_id');
         $this->assertEquals($expected, $notification->toArray());
     }
 }

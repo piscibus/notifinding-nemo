@@ -66,6 +66,7 @@ class Message implements MessageInterface
     {
         $message = $this->getMessage();
         $body = \GuzzleHttp\json_encode($message);
+
         return compact('body');
     }
 
@@ -78,6 +79,7 @@ class Message implements MessageInterface
             'registration_ids' => $this->registrationIds,
             'priority' => $this->priority,
         ];
+
         return $this->handleEmptyParams($message);
     }
 
@@ -97,6 +99,7 @@ class Message implements MessageInterface
         if (count($notification)) {
             $message['notification'] = $notification;
         }
+
         return $message;
     }
 }

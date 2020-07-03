@@ -42,6 +42,7 @@ class Payload implements PayloadInterface
     public static function init(string $title, string $body, array $data = [])
     {
         $notification = Notification::init($title, $body);
+
         return new self($notification, $data);
     }
 

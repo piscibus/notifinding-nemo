@@ -44,6 +44,7 @@ class FcmClient
         array $data = []
     ): ResponseInterface {
         $client = new self();
+
         return $client->send(Message::init($recipients, $title, $body, $data));
     }
 

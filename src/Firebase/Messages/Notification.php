@@ -1,20 +1,20 @@
 <?php
 
 
-namespace Piscibus\Notifier\Firebase\Payloads;
+namespace Piscibus\Notifier\Firebase\Messages;
 
 use Illuminate\Support\Str;
-use Piscibus\Notifier\Firebase\Payloads\Contracts\Payload as PayloadInterface;
-use Piscibus\Notifier\Firebase\Payloads\Traits\AndroidTrait;
-use Piscibus\Notifier\Firebase\Payloads\Traits\IosTrait;
-use Piscibus\Notifier\Firebase\Payloads\Traits\LocalizationTrait;
+use Piscibus\Notifier\Firebase\Messages\Contracts\Notification as NotificationInterface;
+use Piscibus\Notifier\Firebase\Messages\Traits\AndroidTrait;
+use Piscibus\Notifier\Firebase\Messages\Traits\IosTrait;
+use Piscibus\Notifier\Firebase\Messages\Traits\LocalizationTrait;
 
 /**
- * Class Payload
+ * Class Notification
  * @package Piscibus\Notifier\Firebase\Messages
  * @see https://firebase.google.com/docs/cloud-messaging/http-server-ref
  */
-class Payload implements PayloadInterface
+class Notification implements NotificationInterface
 {
     use AndroidTrait, IosTrait, LocalizationTrait;
 
@@ -37,11 +37,21 @@ class Payload implements PayloadInterface
      * @var string|null
      */
     private $sound;
-    
+
     /**
      * @var string|null
      */
     private $clickAction;
+
+    /**
+     * @param string $title
+     * @param string $body
+     * @return static
+     */
+    public static function init(string $title, string $body): self
+    {
+        return (new self())->setTitle($title)->setBody($body);
+    }
 
     /**
      * @inheritDoc
@@ -50,7 +60,7 @@ class Payload implements PayloadInterface
     {
         $data = [];
         foreach (get_object_vars($this) as $name => $value) {
-            if (! is_null($value)) {
+            if (!is_null($value)) {
                 $data[Str::snake($name)] = $value;
             }
         }
@@ -60,7 +70,7 @@ class Payload implements PayloadInterface
 
     /**
      * @param string|null $title
-     * @return Payload
+     * @return Notification
      */
     public function setTitle(?string $title): self
     {
@@ -71,7 +81,7 @@ class Payload implements PayloadInterface
 
     /**
      * @param string|null $body
-     * @return Payload
+     * @return Notification
      */
     public function setBody(?string $body): self
     {
@@ -82,7 +92,7 @@ class Payload implements PayloadInterface
 
     /**
      * @param string|null $icon
-     * @return Payload
+     * @return Notification
      */
     public function setIcon(?string $icon): self
     {
@@ -93,7 +103,7 @@ class Payload implements PayloadInterface
 
     /**
      * @param string|null $sound
-     * @return Payload
+     * @return Notification
      */
     public function setSound(?string $sound): self
     {
@@ -104,7 +114,7 @@ class Payload implements PayloadInterface
 
     /**
      * @param string|null $clickAction
-     * @return Payload
+     * @return Notification
      */
     public function setClickAction(?string $clickAction): self
     {

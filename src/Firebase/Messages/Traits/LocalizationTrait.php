@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Piscibus\Notifier\Firebase\Payloads\Traits;
+namespace Piscibus\Notifier\Firebase\Messages\Traits;
 
-use Piscibus\Notifier\Firebase\Payloads\Payload;
+use Piscibus\Notifier\Firebase\Messages\Notification;
 
 trait LocalizationTrait
 {
@@ -31,9 +31,9 @@ trait LocalizationTrait
 
     /**
      * @param array $titleLocArgs
-     * @return Payload|LocalizationTrait
+     * @return Notification|LocalizationTrait
      */
-    public function setTitleLocArgs(array $titleLocArgs): Payload
+    public function setTitleLocArgs(array $titleLocArgs): Notification
     {
         $this->titleLocArgs = json_encode($titleLocArgs);
 
@@ -42,9 +42,9 @@ trait LocalizationTrait
 
     /**
      * @param array $bodyLocArgs
-     * @return Payload|LocalizationTrait
+     * @return Notification|LocalizationTrait
      */
-    public function setBodyLocArgs(array $bodyLocArgs): Payload
+    public function setBodyLocArgs(array $bodyLocArgs): Notification
     {
         $this->bodyLocArgs = json_encode($bodyLocArgs);
 
@@ -53,9 +53,9 @@ trait LocalizationTrait
 
     /**
      * @param string|null $titleLocKey
-     * @return Payload|LocalizationTrait
+     * @return Notification|LocalizationTrait
      */
-    public function setTitleLocKey(?string $titleLocKey): Payload
+    public function setTitleLocKey(?string $titleLocKey): Notification
     {
         $this->titleLocKey = $titleLocKey;
 
@@ -64,9 +64,9 @@ trait LocalizationTrait
 
     /**
      * @param string|null $bodyLocKey
-     * @return Payload|LocalizationTrait
+     * @return Notification|LocalizationTrait
      */
-    public function setBodyLocKey(?string $bodyLocKey): Payload
+    public function setBodyLocKey(?string $bodyLocKey): Notification
     {
         $this->bodyLocKey = $bodyLocKey;
 

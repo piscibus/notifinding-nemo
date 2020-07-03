@@ -4,7 +4,7 @@
 namespace Piscibus\Notifier\Firebase\Clients;
 
 use GuzzleHttp\Client;
-use Piscibus\Notifier\Firebase\Payloads\Contracts\Payload;
+use Piscibus\Notifier\Firebase\Messages\Contracts\Notification;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -31,10 +31,10 @@ class FcmClient
 
 
     /**
-     * @param Payload $message
+     * @param Notification $message
      * @return ResponseInterface
      */
-    public function send(Payload $message): ResponseInterface
+    public function send(Notification $message): ResponseInterface
     {
         return $this->client->post(self::API_URI, $message->toArray());
     }

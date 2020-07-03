@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Piscibus\Notifier\Firebase\Payloads\Traits;
+namespace Piscibus\Notifier\Firebase\Messages\Traits;
 
-use Piscibus\Notifier\Firebase\Payloads\Contracts\Payload;
+use Piscibus\Notifier\Firebase\Messages\Contracts\Notification;
 
 /**
  * Trait IosTrait
@@ -18,9 +18,9 @@ trait IosTrait
 
     /**
      * @param string|null $subtitle
-     * @return IosTrait|Payload
+     * @return IosTrait|Notification
      */
-    public function setSubtitle(?string $subtitle): Payload
+    public function setSubtitle(?string $subtitle): Notification
     {
         $this->subtitle = $subtitle;
 

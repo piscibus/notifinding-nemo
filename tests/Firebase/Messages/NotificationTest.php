@@ -1,18 +1,18 @@
 <?php
 
-namespace Piscibus\Notifier\Tests\Firebase\Payloads;
+namespace Piscibus\Notifier\Tests\Firebase\Messages;
 
 use Faker\Factory;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-use Piscibus\Notifier\Firebase\Payloads\Payload;
+use Piscibus\Notifier\Firebase\Messages\Notification;
 use Piscibus\Notifier\Tests\TestCase;
 
 /**
- * Class PayloadTest
+ * Class NotificationTest
  * @package Piscibus\Notifier\Tests\Firebase\Messages
  */
-class PayloadTest extends TestCase
+class NotificationTest extends TestCase
 {
     /**
      * @var Faker
@@ -38,7 +38,7 @@ class PayloadTest extends TestCase
         $body_loc_key = Str::slug($this->faker->text(10));
         $android_channel_id = 'nemo.channel';
 
-        $notification = new Payload();
+        $notification = new Notification();
         $notification->setTitle($title)
             ->setBody($body)
             ->setBodyLocKey($body_loc_key)

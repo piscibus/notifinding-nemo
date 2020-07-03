@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Piscibus\Notifier\Firebase\Payloads\Traits;
+namespace Piscibus\Notifier\Firebase\Messages\Traits;
 
-use Piscibus\Notifier\Firebase\Payloads\Contracts\Payload;
+use Piscibus\Notifier\Firebase\Messages\Contracts\Notification;
 
 /**
  * Interface AndroidTrait
@@ -33,9 +33,9 @@ trait AndroidTrait
 
     /**
      * @param string|null $badge
-     * @return Payload|AndroidTrait
+     * @return Notification|AndroidTrait
      */
-    public function setBadge(?string $badge): Payload
+    public function setBadge(?string $badge): Notification
     {
         $this->badge = $badge;
 
@@ -44,9 +44,9 @@ trait AndroidTrait
 
     /**
      * @param string|null $tag
-     * @return Payload|AndroidTrait
+     * @return Notification|AndroidTrait
      */
-    public function setTag(?string $tag): Payload
+    public function setTag(?string $tag): Notification
     {
         $this->tag = $tag;
 
@@ -55,9 +55,9 @@ trait AndroidTrait
 
     /**
      * @param string|null $androidChannelId
-     * @return Payload|AndroidTrait
+     * @return Notification|AndroidTrait
      */
-    public function setAndroidChannelId(?string $androidChannelId): Payload
+    public function setAndroidChannelId(?string $androidChannelId): Notification
     {
         $this->androidChannelId = $androidChannelId;
 
@@ -66,9 +66,9 @@ trait AndroidTrait
 
     /**
      * @param string|null $color
-     * @return Payload|AndroidTrait
+     * @return Notification|AndroidTrait
      */
-    public function setColor(?string $color): Payload
+    public function setColor(?string $color): Notification
     {
         $this->color = $color;
 

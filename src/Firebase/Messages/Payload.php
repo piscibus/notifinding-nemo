@@ -3,7 +3,6 @@
 
 namespace Piscibus\Notifier\Firebase\Messages;
 
-
 use Piscibus\Notifier\Firebase\Messages\Contracts\Notification;
 use Piscibus\Notifier\Firebase\Messages\Contracts\Payload as PayloadInterface;
 

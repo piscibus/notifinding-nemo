@@ -53,7 +53,7 @@ class Message implements MessageInterface
             'registration_ids' => $this->registrationIds,
             'priority' => $this->priority,
             'data' => $this->payload->getData(),
-            'notification' => $this->payload->getNotification()->toArray()
+            'notification' => $this->payload->getNotification()->toArray(),
         ];
     }
 }

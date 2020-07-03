@@ -50,7 +50,7 @@ class MessageTest extends TestCase
             'registration_ids' => $recipients,
             'priority' => Message::PRIORITY_DEFAULT,
             'data' => $data,
-            'notification' => $notification->toArray()
+            'notification' => $notification->toArray(),
         ];
         $actual = $message->toArray();
 

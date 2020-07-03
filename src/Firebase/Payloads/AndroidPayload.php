@@ -3,7 +3,6 @@
 
 namespace Piscibus\Notifier\Firebase\Payloads;
 
-
 use Illuminate\Support\Str;
 use Piscibus\Notifier\Firebase\Payloads\Contracts\Payload;
 
@@ -83,10 +82,11 @@ class AndroidPayload implements Payload
     {
         $data = [];
         foreach (get_object_vars($this) as $name => $value) {
-            if (!is_null($value)) {
+            if (! is_null($value)) {
                 $data[Str::snake($name)] = $value;
             }
         }
+
         return $data;
     }
 
@@ -97,6 +97,7 @@ class AndroidPayload implements Payload
     public function setTitle(?string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -107,6 +108,7 @@ class AndroidPayload implements Payload
     public function setBody(?string $body): self
     {
         $this->body = $body;
+
         return $this;
     }
 
@@ -117,6 +119,7 @@ class AndroidPayload implements Payload
     public function setAndroidChannelId(?string $androidChannelId): self
     {
         $this->androidChannelId = $androidChannelId;
+
         return $this;
     }
 
@@ -127,6 +130,7 @@ class AndroidPayload implements Payload
     public function setIcon(?string $icon): self
     {
         $this->icon = $icon;
+
         return $this;
     }
 
@@ -137,6 +141,7 @@ class AndroidPayload implements Payload
     public function setSound(?string $sound): self
     {
         $this->sound = $sound;
+
         return $this;
     }
 
@@ -147,6 +152,7 @@ class AndroidPayload implements Payload
     public function setTag(?string $tag): self
     {
         $this->tag = $tag;
+
         return $this;
     }
 
@@ -157,6 +163,7 @@ class AndroidPayload implements Payload
     public function setColor(?string $color): self
     {
         $this->color = $color;
+
         return $this;
     }
 
@@ -167,6 +174,7 @@ class AndroidPayload implements Payload
     public function setClickAction(?string $clickAction): self
     {
         $this->clickAction = $clickAction;
+
         return $this;
     }
 
@@ -177,6 +185,7 @@ class AndroidPayload implements Payload
     public function setBodyLocKey(?string $bodyLocKey): self
     {
         $this->bodyLocKey = $bodyLocKey;
+
         return $this;
     }
 
@@ -187,6 +196,7 @@ class AndroidPayload implements Payload
     public function setBodyLocArgs(array $bodyLocArgs): self
     {
         $this->bodyLocArgs = json_encode($bodyLocArgs);
+
         return $this;
     }
 
@@ -197,6 +207,7 @@ class AndroidPayload implements Payload
     public function setTitleLocKey(?string $titleLocKey): self
     {
         $this->titleLocKey = $titleLocKey;
+
         return $this;
     }
 
@@ -207,6 +218,7 @@ class AndroidPayload implements Payload
     public function setTitleLocArgs(array $titleLocArgs): self
     {
         $this->titleLocArgs = json_encode($titleLocArgs);
+
         return $this;
     }
 }

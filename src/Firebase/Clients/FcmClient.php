@@ -4,7 +4,8 @@
 namespace Piscibus\Notifier\Firebase\Clients;
 
 use GuzzleHttp\Client;
-use Piscibus\Notifier\Firebase\Messages\Contracts\Message;
+use Piscibus\Notifier\Firebase\Messages\Contracts\Message as MessageInterface;
+use Piscibus\Notifier\Firebase\Messages\Message;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -29,12 +30,29 @@ class FcmClient
         $this->client = new Client(compact('headers'));
     }
 
-
     /**
-     * @param Message $message
+     * @param array $recipients
+     * @param string $title
+     * @param string $body
+     * @param array $data
      * @return ResponseInterface
      */
-    public function send(Message $message): ResponseInterface
+    public static function sendMessage(
+        array $recipients,
+        string $title,
+        string $body,
+        array $data = []
+    ): ResponseInterface {
+        $client = new self();
+        return $client->send(Message::init($recipients, $title, $body, $data));
+    }
+
+
+    /**
+     * @param MessageInterface $message
+     * @return ResponseInterface
+     */
+    public function send(MessageInterface $message): ResponseInterface
     {
         return $this->client->post(self::API_URI, $message->toArray());
     }

@@ -3,7 +3,7 @@
 
 namespace Piscibus\Notifier\Firebase\Messages;
 
-use Piscibus\Notifier\Firebase\Messages\Contracts\Notification;
+use Piscibus\Notifier\Firebase\Messages\Contracts\Notification as NotificationInterface;
 use Piscibus\Notifier\Firebase\Messages\Contracts\Payload as PayloadInterface;
 
 /**
@@ -27,16 +27,28 @@ class Payload implements PayloadInterface
      * @param array $data
      * @param Notification $notification
      */
-    public function __construct(array $data, Notification $notification)
+    public function __construct(Notification $notification, array $data = [])
     {
         $this->data = $data;
         $this->notification = $notification;
     }
 
     /**
+     * @param string $title
+     * @param string $body
+     * @param array $data
+     * @return Payload
+     */
+    public static function init(string $title, string $body, array $data = [])
+    {
+        $notification = Notification::init($title, $body);
+        return new self($notification, $data);
+    }
+
+    /**
      * @inheritDoc
      */
-    public function getNotification(): Notification
+    public function getNotification(): NotificationInterface
     {
         return $this->notification;
     }

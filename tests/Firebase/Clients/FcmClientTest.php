@@ -25,10 +25,40 @@ class FcmClientTest extends TestCase
         $notification = Notification::init('Nemo: Hello, world!', 'Hey, you forget to say Hello!');
         $data = ['foo' => 'bar'];
         $recipients = [self::FCM_TOKEN_1, self::FCM_TOKEN_2];
-        $message = new Message($recipients, new Payload($data, $notification));
+        $message = new Message($recipients, new Payload($notification, $data));
 
         $client = new FcmClient();
         $response = $client->send($message);
+        $this->assertEquals(200, $response->getStatusCode());
+    }
+
+    /**
+     * @test
+     */
+    public function test_it_can_send_message_with_no_data()
+    {
+        $title = 'Watch the trailer';
+        $body = 'You think Escobar was bad. Wait until you meet these guys';
+        $recipients = [self::FCM_TOKEN_1, self::FCM_TOKEN_2];
+
+        $message = Message::init($recipients, $title, $body);
+
+        $client = new FcmClient();
+        $response = $client->send($message);
+        $this->assertEquals(200, $response->getStatusCode());
+    }
+
+
+    /**
+     * @test
+     */
+    public function test_it_can_be_created_by_title_and_body()
+    {
+        $title = 'Watch the trailer';
+        $body = 'You think Escobar was bad. Wait until you meet these guys';
+        $recipients = [self::FCM_TOKEN_1, self::FCM_TOKEN_2];
+
+        $response = FcmClient::sendMessage($recipients, $title, $body);
         $this->assertEquals(200, $response->getStatusCode());
     }
 }

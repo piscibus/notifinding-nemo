@@ -4,7 +4,7 @@
 namespace Piscibus\Notifier\Firebase\Messages;
 
 use Piscibus\Notifier\Firebase\Messages\Contracts\Message as MessageInterface;
-use Piscibus\Notifier\Firebase\Messages\Contracts\Payload;
+use Piscibus\Notifier\Firebase\Messages\Contracts\Payload as PayloadInterface;
 
 /**
  * Class Message
@@ -27,7 +27,7 @@ class Message implements MessageInterface
     private $priority;
 
     /**
-     * @var Payload
+     * @var PayloadInterface
      */
     private $payload;
 
@@ -35,13 +35,28 @@ class Message implements MessageInterface
      * Message constructor.
      * @param array $registrationIds
      * @param string $priority
-     * @param Payload $payload
+     * @param PayloadInterface $payload
      */
-    public function __construct(array $registrationIds, Payload $payload, string $priority = self::PRIORITY_NORMAL)
-    {
+    public function __construct(
+        array $registrationIds,
+        PayloadInterface $payload,
+        string $priority = self::PRIORITY_NORMAL
+    ) {
         $this->registrationIds = $registrationIds;
         $this->priority = $priority;
         $this->payload = $payload;
+    }
+
+    /**
+     * @param array $registrationIds
+     * @param string $title
+     * @param string $body
+     * @param array $data
+     * @return static
+     */
+    public static function init(array $registrationIds, string $title, string $body, array $data = []): self
+    {
+        return new self($registrationIds, Payload::init($title, $body, $data));
     }
 
     /**
@@ -49,13 +64,40 @@ class Message implements MessageInterface
      */
     public function toArray(): array
     {
-        $data = [
+        $message = $this->getMessage();
+        $body = \GuzzleHttp\json_encode($message);
+        return compact('body');
+    }
+
+    /**
+     * @return array
+     */
+    public function getMessage(): array
+    {
+        $message = [
             'registration_ids' => $this->registrationIds,
             'priority' => $this->priority,
-            'data' => $this->payload->getData(),
-            'notification' => $this->payload->getNotification()->toArray(),
         ];
-        $body = \GuzzleHttp\json_encode($data);
-        return compact('body');
+        $message = $this->handleEmptyParams($message);
+        return $message;
+    }
+
+    /**
+     * @param array $message
+     * @return array
+     */
+    public function handleEmptyParams(array $message): array
+    {
+        $data = $this->payload->getData();
+        $notification = $this->payload->getNotification()->toArray();
+
+        if (count($data)) {
+            $message['data'] = $data;
+        }
+
+        if (count($notification)) {
+            $message['notification'] = $notification;
+        }
+        return $message;
     }
 }

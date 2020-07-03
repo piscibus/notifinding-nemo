@@ -42,18 +42,31 @@ class MessageTest extends TestCase
         $data = ['phone' => $this->faker->phoneNumber];
 
         $recipients = [$this->faker->unique()->uuid, $this->faker->unique()->uuid];
-        $payload = new Payload($data, $notification);
+        $payload = new Payload($notification, $data);
 
         $message = new Message($recipients, $payload);
 
-        $expected = [
+        $expectedBody = [
             'registration_ids' => $recipients,
             'priority' => Message::PRIORITY_DEFAULT,
             'data' => $data,
             'notification' => $notification->toArray(),
         ];
+        $expected = ['body' => json_encode($expectedBody)];
         $actual = $message->toArray();
-
         $this->assertEquals($actual, $expected);
+    }
+
+    /**
+     * @test
+     */
+    public function test_it_can_be_created_by_title_and_body()
+    {
+        $title = $this->faker->realText(30);
+        $body = $this->faker->realText(60);
+        $recipients = [$this->faker->unique()->uuid, $this->faker->unique()->uuid];
+
+        $message = Message::init($recipients, $title, $body);
+        $this->assertInstanceOf(Message::class, $message);
     }
 }

@@ -60,7 +60,7 @@ class Notification implements NotificationInterface
     {
         $data = [];
         foreach (get_object_vars($this) as $name => $value) {
-            if (!is_null($value)) {
+            if (! is_null($value)) {
                 $data[Str::snake($name)] = $value;
             }
         }

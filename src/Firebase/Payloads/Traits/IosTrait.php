@@ -23,7 +23,7 @@ trait IosTrait
     public function setSubtitle(?string $subtitle): Payload
     {
         $this->subtitle = $subtitle;
+
         return $this;
     }
-
 }

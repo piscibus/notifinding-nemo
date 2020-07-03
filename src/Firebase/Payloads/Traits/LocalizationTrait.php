@@ -3,7 +3,6 @@
 
 namespace Piscibus\Notifier\Firebase\Payloads\Traits;
 
-
 use Piscibus\Notifier\Firebase\Payloads\Payload;
 
 trait LocalizationTrait

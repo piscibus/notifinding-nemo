@@ -38,6 +38,7 @@ trait AndroidTrait
     public function setBadge(?string $badge): Payload
     {
         $this->badge = $badge;
+
         return $this;
     }
 
@@ -48,6 +49,7 @@ trait AndroidTrait
     public function setTag(?string $tag): Payload
     {
         $this->tag = $tag;
+
         return $this;
     }
 
@@ -58,6 +60,7 @@ trait AndroidTrait
     public function setAndroidChannelId(?string $androidChannelId): Payload
     {
         $this->androidChannelId = $androidChannelId;
+
         return $this;
     }
 
@@ -68,6 +71,7 @@ trait AndroidTrait
     public function setColor(?string $color): Payload
     {
         $this->color = $color;
+
         return $this;
     }
 }

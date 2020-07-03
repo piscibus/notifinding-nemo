@@ -50,7 +50,7 @@ class Payload implements PayloadInterface
     {
         $data = [];
         foreach (get_object_vars($this) as $name => $value) {
-            if (!is_null($value)) {
+            if (! is_null($value)) {
                 $data[Str::snake($name)] = $value;
             }
         }
@@ -112,5 +112,4 @@ class Payload implements PayloadInterface
 
         return $this;
     }
-
 }

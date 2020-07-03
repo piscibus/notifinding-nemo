@@ -49,12 +49,13 @@ class Message implements MessageInterface
      */
     public function toArray(): array
     {
-        $body = [
+        $data = [
             'registration_ids' => $this->registrationIds,
             'priority' => $this->priority,
             'data' => $this->payload->getData(),
             'notification' => $this->payload->getNotification()->toArray()
         ];
+        $body = \GuzzleHttp\json_encode($data);
         return compact('body');
     }
 }

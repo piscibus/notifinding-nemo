@@ -7,6 +7,8 @@ use Piscibus\Notifier\NotifindingNemoServiceProvider;
 
 class TestCase extends Orchestra
 {
+    const SERVER_KEY = 'AAAA-C1CvXU:APA91bH0FQSmWTyHVJsQTTrAmZqPjk6v9HqTHBr1t-QG8G89SmLJC4xNYaUWQS5xHCDNeoC7TNngTDDUJPST8L97Tpi_xoabuKTnV91fIlb9qJKWb-xf7T-Eu75jkeR66uyKV8GRkcxm';
+
     public function setUp(): void
     {
         parent::setUp();
@@ -29,5 +31,7 @@ class TestCase extends Orchestra
             'database' => ':memory:',
             'prefix' => '',
         ]);
+
+        $app['config']->set('notifier.firebase.key', self::SERVER_KEY);
     }
 }

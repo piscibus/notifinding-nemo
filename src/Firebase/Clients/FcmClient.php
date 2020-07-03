@@ -4,7 +4,7 @@
 namespace Piscibus\Notifier\Firebase\Clients;
 
 use GuzzleHttp\Client;
-use Piscibus\Notifier\Firebase\Messages\Contracts\Notification;
+use Piscibus\Notifier\Firebase\Messages\Contracts\Message;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -31,10 +31,10 @@ class FcmClient
 
 
     /**
-     * @param Notification $message
+     * @param Message $message
      * @return ResponseInterface
      */
-    public function send(Notification $message): ResponseInterface
+    public function send(Message $message): ResponseInterface
     {
         return $this->client->post(self::API_URI, $message->toArray());
     }
@@ -45,7 +45,6 @@ class FcmClient
     private function getHeaders(): array
     {
         $key = config('notifier.firebase.key');
-
         return [
             'Authorization' => sprintf("key=%s", $key),
             'Content-Type' => 'application/json',

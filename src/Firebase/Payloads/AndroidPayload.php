@@ -1,18 +1,18 @@
 <?php
 
 
-namespace Piscibus\Notifier\Firebase\Messages;
+namespace Piscibus\Notifier\Firebase\Payloads;
 
 
 use Illuminate\Support\Str;
-use Piscibus\Notifier\Firebase\Messages\Contracts\Message;
+use Piscibus\Notifier\Firebase\Payloads\Contracts\Payload;
 
 /**
- * Class AndroidMessage
+ * Class AndroidPayload
  * @package Piscibus\Notifier\Firebase\Messages
  * @see https://firebase.google.com/docs/cloud-messaging/http-server-ref
  */
-class AndroidMessage implements Message
+class AndroidPayload implements Payload
 {
     /**
      * @var string|null
@@ -92,7 +92,7 @@ class AndroidMessage implements Message
 
     /**
      * @param string|null $title
-     * @return AndroidMessage
+     * @return AndroidPayload
      */
     public function setTitle(?string $title): self
     {
@@ -102,7 +102,7 @@ class AndroidMessage implements Message
 
     /**
      * @param string|null $body
-     * @return AndroidMessage
+     * @return AndroidPayload
      */
     public function setBody(?string $body): self
     {
@@ -112,7 +112,7 @@ class AndroidMessage implements Message
 
     /**
      * @param string|null $androidChannelId
-     * @return AndroidMessage
+     * @return AndroidPayload
      */
     public function setAndroidChannelId(?string $androidChannelId): self
     {
@@ -122,7 +122,7 @@ class AndroidMessage implements Message
 
     /**
      * @param string|null $icon
-     * @return AndroidMessage
+     * @return AndroidPayload
      */
     public function setIcon(?string $icon): self
     {
@@ -132,7 +132,7 @@ class AndroidMessage implements Message
 
     /**
      * @param string|null $sound
-     * @return AndroidMessage
+     * @return AndroidPayload
      */
     public function setSound(?string $sound): self
     {
@@ -142,7 +142,7 @@ class AndroidMessage implements Message
 
     /**
      * @param string|null $tag
-     * @return AndroidMessage
+     * @return AndroidPayload
      */
     public function setTag(?string $tag): self
     {
@@ -152,7 +152,7 @@ class AndroidMessage implements Message
 
     /**
      * @param string|null $color
-     * @return AndroidMessage
+     * @return AndroidPayload
      */
     public function setColor(?string $color): self
     {
@@ -162,7 +162,7 @@ class AndroidMessage implements Message
 
     /**
      * @param string|null $clickAction
-     * @return AndroidMessage
+     * @return AndroidPayload
      */
     public function setClickAction(?string $clickAction): self
     {
@@ -172,7 +172,7 @@ class AndroidMessage implements Message
 
     /**
      * @param string|null $bodyLocKey
-     * @return AndroidMessage
+     * @return AndroidPayload
      */
     public function setBodyLocKey(?string $bodyLocKey): self
     {
@@ -182,7 +182,7 @@ class AndroidMessage implements Message
 
     /**
      * @param array $bodyLocArgs
-     * @return AndroidMessage
+     * @return AndroidPayload
      */
     public function setBodyLocArgs(array $bodyLocArgs): self
     {
@@ -192,7 +192,7 @@ class AndroidMessage implements Message
 
     /**
      * @param string|null $titleLocKey
-     * @return AndroidMessage
+     * @return AndroidPayload
      */
     public function setTitleLocKey(?string $titleLocKey): self
     {
@@ -202,7 +202,7 @@ class AndroidMessage implements Message
 
     /**
      * @param array $titleLocArgs
-     * @return AndroidMessage
+     * @return AndroidPayload
      */
     public function setTitleLocArgs(array $titleLocArgs): self
     {

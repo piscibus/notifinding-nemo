@@ -3,7 +3,6 @@
 
 namespace Piscibus\Notifier\Firebase\Clients;
 
-
 use GuzzleHttp\Client;
 use Piscibus\Notifier\Firebase\Payloads\Contracts\Payload;
 use Psr\Http\Message\ResponseInterface;
@@ -46,9 +45,10 @@ class FcmClient
     private function getHeaders(): array
     {
         $key = config('notifier.firebase.key');
+
         return [
             'Authorization' => sprintf("key=%s", $key),
-            'Content-Type' => 'application/json'
+            'Content-Type' => 'application/json',
         ];
     }
 }

@@ -56,6 +56,7 @@ class Message implements MessageInterface
             'notification' => $this->payload->getNotification()->toArray(),
         ];
         $body = \GuzzleHttp\json_encode($data);
+
         return compact('body');
     }
 }

@@ -45,6 +45,7 @@ class FcmClient
     private function getHeaders(): array
     {
         $key = config('notifier.firebase.key');
+
         return [
             'Authorization' => sprintf("key=%s", $key),
             'Content-Type' => 'application/json',

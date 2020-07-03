@@ -78,8 +78,7 @@ class Message implements MessageInterface
             'registration_ids' => $this->registrationIds,
             'priority' => $this->priority,
         ];
-        $message = $this->handleEmptyParams($message);
-        return $message;
+        return $this->handleEmptyParams($message);
     }
 
     /**

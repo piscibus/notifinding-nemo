@@ -3,7 +3,6 @@
 
 namespace Piscibus\Notifier\Firebase\Messages\Contracts;
 
-
 interface Message
 {
     /**

@@ -11,8 +11,7 @@ class ExampleTest extends TestCase
     {
         $this->assertTrue(true);
     }
-
-    /** @test */
+    
     public function testFireBase()
     {
         $user = new TestModel();

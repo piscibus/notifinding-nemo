@@ -5,7 +5,6 @@ namespace Piscibus\Notifier\Firebase\Clients;
 
 use GuzzleHttp\Client;
 use Piscibus\Notifier\Firebase\Messages\Contracts\Message as MessageInterface;
-use Piscibus\Notifier\Firebase\Messages\Message;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -22,33 +21,21 @@ class FcmClient
     private $client;
 
     /**
-     * FcmClient constructor.
+     * @var string
      */
-    public function __construct()
+    private $key;
+
+    /**
+     * FcmClient constructor.
+     * @param string $key
+     */
+    public function __construct(string $key)
     {
+        $this->key = $key;
         $headers = $this->getHeaders();
         $this->client = new Client(compact('headers'));
     }
-
-    /**
-     * @param array $recipients
-     * @param string $title
-     * @param string $body
-     * @param array $data
-     * @return ResponseInterface
-     */
-    public static function sendMessage(
-        array $recipients,
-        string $title,
-        string $body,
-        array $data = []
-    ): ResponseInterface {
-        $client = new self();
-
-        return $client->send(Message::init($recipients, $title, $body, $data));
-    }
-
-
+    
     /**
      * @param MessageInterface $message
      * @return ResponseInterface
@@ -63,10 +50,8 @@ class FcmClient
      */
     private function getHeaders(): array
     {
-        $key = config('notifier.firebase.key');
-
         return [
-            'Authorization' => sprintf("key=%s", $key),
+            'Authorization' => sprintf("key=%s", $this->key),
             'Content-Type' => 'application/json',
         ];
     }

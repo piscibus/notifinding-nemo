@@ -27,7 +27,8 @@ class FcmClientTest extends TestCase
         $recipients = [self::FCM_TOKEN_1, self::FCM_TOKEN_2];
         $message = new Message($recipients, new Payload($notification, $data));
 
-        $client = new FcmClient();
+        $key = config('notifier.firebase.key');
+        $client = new FcmClient($key);
         $response = $client->send($message);
         $this->assertEquals(200, $response->getStatusCode());
     }
@@ -43,22 +44,9 @@ class FcmClientTest extends TestCase
 
         $message = Message::init($recipients, $title, $body);
 
-        $client = new FcmClient();
+        $key = config('notifier.firebase.key');
+        $client = new FcmClient($key);
         $response = $client->send($message);
-        $this->assertEquals(200, $response->getStatusCode());
-    }
-
-
-    /**
-     * @test
-     */
-    public function test_it_can_be_created_by_title_and_body()
-    {
-        $title = 'Watch the trailer';
-        $body = 'You think Escobar was bad. Wait until you meet these guys';
-        $recipients = [self::FCM_TOKEN_1, self::FCM_TOKEN_2];
-
-        $response = FcmClient::sendMessage($recipients, $title, $body);
         $this->assertEquals(200, $response->getStatusCode());
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Piscibus\Notifier\Expo\Messages\Traits;
 
-
 use Piscibus\Notifier\Expo\Messages\Contracts\NotificationInterface;
 
 trait IosTrait

@@ -6,7 +6,6 @@ use Piscibus\Notifier\Expo\Clients\ExpoClient;
 use Piscibus\Notifier\Expo\Messages\Message;
 use Piscibus\Notifier\Tests\TestCase;
 
-
 class ExpoClientTest extends TestCase
 {
     const EXPO_TOKEN_1 = 'ExponentPushToken[bIW2NgPL6Vaqyrz8bsEvfC]';

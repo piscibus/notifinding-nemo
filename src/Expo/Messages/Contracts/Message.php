@@ -3,7 +3,6 @@
 
 namespace Piscibus\Notifier\Expo\Messages\Contracts;
 
-
 interface Message
 {
     /**

@@ -2,7 +2,7 @@
 
 namespace Piscibus\Notifier\Expo\Messages\Traits;
 
-use Piscibus\Notifier\Expo\Messages\Contracts\NotificationInterface;
+use Piscibus\Notifier\Expo\Messages\Contracts\Notification;
 
 trait IosTrait
 {
@@ -14,9 +14,9 @@ trait IosTrait
 
     /**
      * @param string|null $subTitle
-     * @return NotificationInterface|IosTrait
+     * @return Notification|IosTrait
      */
-    public function setSubTitle(?string $subTitle): NotificationInterface
+    public function setSubTitle(?string $subTitle): Notification
     {
         $this->subtitle = $subTitle;
 
@@ -25,9 +25,9 @@ trait IosTrait
 
     /**
      * @param string $sound
-     * @return $this|NotificationInterface
+     * @return $this|Notification
      */
-    public function setSound(string $sound = 'default'): NotificationInterface
+    public function setSound(string $sound = 'default'): Notification
     {
         $this->sound = $sound;
 
@@ -36,9 +36,9 @@ trait IosTrait
 
     /**
      * @param int $badge
-     * @return NotificationInterface|$this
+     * @return Notification|$this
      */
-    public function setBadge(?int $badge): NotificationInterface
+    public function setBadge(?int $badge): Notification
     {
         $this->badge = $badge;
 

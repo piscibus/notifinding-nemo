@@ -4,11 +4,10 @@
 namespace Piscibus\Notifier\Expo\Messages;
 
 use Illuminate\Support\Str;
-use Piscibus\Notifier\Expo\Messages\Contracts\NotificationInterface;
 use Piscibus\Notifier\Expo\Messages\Traits\AndroidTrait;
 use Piscibus\Notifier\Expo\Messages\Traits\IosTrait;
 
-class Notification implements NotificationInterface
+class Notification implements Contracts\Notification
 {
     use IosTrait, AndroidTrait;
 
@@ -41,7 +40,7 @@ class Notification implements NotificationInterface
      */
     public function setData(array $data = []): self
     {
-        $this->data = json_encode($data, JSON_FORCE_OBJECT);
+        $this->data = $data;
 
         return $this;
     }
@@ -106,12 +105,12 @@ class Notification implements NotificationInterface
     }
 
     /**
-     * @param string|null $pirority
+     * @param string|null $priority
      * @return $this
      */
-    public function setPriority(?string $pirority): self
+    public function setPriority(?string $priority): self
     {
-        $this->priority = $pirority;
+        $this->priority = $priority;
 
         return $this;
     }

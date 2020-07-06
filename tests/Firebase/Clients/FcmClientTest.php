@@ -14,7 +14,7 @@ use Piscibus\Notifier\Tests\TestCase;
  */
 class FcmClientTest extends TestCase
 {
-    const FCM_TOKEN_1 = 'd0GP7vCZRy6t_XmN-VUdPF:APA91bG4qUKPGQYoHdxVsuWzVV-V3DCMzYTmD3rH-JuGnIakXmcHsJ2BNHDq_VGVOKcWt3MqEmcSUTlmOKcWHee-GptMfQr1q0YxNmYPKek1sqehnkyMGR9WLsgGfhtZnSXG8uD4_xfH';
+    const FCM_TOKEN_1 = 'eEvK5BjMRhutrFObWcrFk-:APA91bHrSsAzg-DsWpKg1-FXI9SJqiutpOIscZrteQs139ZTyuI7XAy4lIO8DsAF2GrvAeAi3K-Un51tM1cGvNUL-Rd1L19Z5NKB3IHfXmNtsfsL9V8xa1hq16h1gKE9O8uS_zJ-2dZL';
     const FCM_TOKEN_2 = 'cEmJw_xmSNqapY7Gb2gmUb:APA91bHAc2PwvDDLNZsSyABzOXUJopbw2cmsbCKiJa97iPXeCxXDSgebTTCIMk017wQa6RV5eobyqlHL0WCoWZhQAIYLyjoG7dA_wv78mxOazFF0f4zJbnL-Kc97ddxC-5ie-MpVjIUP';
 
     /**

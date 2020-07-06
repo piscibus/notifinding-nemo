@@ -3,7 +3,7 @@
 
 namespace Piscibus\Notifier\Expo\Messages\Traits;
 
-use Piscibus\Notifier\Expo\Messages\Contracts\NotificationInterface;
+use Piscibus\Notifier\Expo\Messages\Contracts\Notification;
 
 trait AndroidTrait
 {
@@ -11,9 +11,9 @@ trait AndroidTrait
 
     /**
      * @param string|null $channelId
-     * @return NotificationInterface|$this
+     * @return Notification|$this
      */
-    public function setChannelId(?string $channelId): NotificationInterface
+    public function setChannelId(?string $channelId): Notification
     {
         $this->channelId = $channelId;
 

@@ -3,7 +3,7 @@
 
 namespace Piscibus\Notifier\Expo\Messages\Contracts;
 
-interface NotificationInterface
+interface Notification
 {
     public function toArray(): array;
 }

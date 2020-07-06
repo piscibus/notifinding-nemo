@@ -3,7 +3,7 @@
 
 namespace Piscibus\Notifier\Expo\Messages;
 
-use Piscibus\Notifier\Expo\Messages\Contracts\NotificationInterface;
+use Piscibus\Notifier\Expo\Messages\Contracts\Notification as NotificationInterface;
 
 class Message implements Contracts\Message
 {
@@ -25,7 +25,6 @@ class Message implements Contracts\Message
      */
     private $to;
 
-
     /**
      * Message constructor.
      * @param array $to
@@ -41,7 +40,7 @@ class Message implements Contracts\Message
 
     public static function init(array $to, string $title = '', string $body = '', array $data = []): self
     {
-        return (new self($to, Notification::init($title, $body, $data)));
+        return new self($to, Notification::init($title, $body, $data));
     }
 
     /**
@@ -49,22 +48,33 @@ class Message implements Contracts\Message
      */
     public function toArray(): array
     {
-        return $this->getMessage();
+        return ['form_params' => $this->getMessage()];
     }
 
+    /**
+     * @return array
+     */
     private function getMessage(): array
     {
-        $notificationData = $this->notification->toArray();
+        $message = $this->parseNotification();
+        $message["to"] = $this->to;
+        $message["priority"] = $this->priority;
 
+        return $message;
+    }
+
+    /**
+     * @return array
+     */
+    private function parseNotification(): array
+    {
+        $message = [];
+        $notificationData = $this->notification->toArray();
         if (count($notificationData)) {
             foreach ($notificationData as $key => $value) {
                 $message[$key] = $value;
             }
         }
-
-        $message["to"] = $this->to;
-
-        $message["priority"] = $this->priority;
 
         return $message;
     }

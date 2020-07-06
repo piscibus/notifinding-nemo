@@ -23,7 +23,7 @@
     "require": {
         "php": "^7.2",
         "guzzlehttp/guzzle": "^6.2",
-         "ext-json": "*"
+        "ext-json": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
@@ -35,10 +35,7 @@
     "autoload": {
         "psr-4": {
             "Piscibus\\Notifier\\": "src"
-        },
-        "files": [
-            "src\\Helpers\\Functions.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {

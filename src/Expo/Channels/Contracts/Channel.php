@@ -3,7 +3,6 @@
 
 namespace Piscibus\Notifier\Expo\Channels\Contracts;
 
-
 interface Channel
 {
     /**

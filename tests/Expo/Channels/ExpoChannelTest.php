@@ -5,7 +5,6 @@ namespace Piscibus\Notifier\Tests\Expo\Channels;
 use Illuminate\Support\Facades\Notification;
 use Piscibus\Notifier\Tests\TestCase;
 
-
 class ExpoChannelTest extends TestCase
 {
     /**

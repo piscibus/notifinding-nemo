@@ -24,5 +24,4 @@ class User extends Model implements ExpoNotifiable
     {
         return [Arr::random([self::EXPO_TOKEN_1, self::EXPO_TOKEN_2])];
     }
-
 }

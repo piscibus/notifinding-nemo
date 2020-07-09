@@ -2,7 +2,6 @@
 
 namespace Piscibus\Notifier\Expo\Channels\Contracts;
 
-
 use Piscibus\Notifier\Expo\Messages\Contracts\Message;
 
 interface ExpoNotification

@@ -46,7 +46,7 @@ class MessageTest extends TestCase
 
         $expectedBody = [
             'to' => $recipients,
-            'data' => json_encode($data),
+            'data' => ($data),
             'title' => $title,
             'body' => $body,
             'priority' => $priority,

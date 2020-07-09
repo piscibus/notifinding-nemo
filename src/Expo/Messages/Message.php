@@ -48,7 +48,7 @@ class Message implements Contracts\Message
      */
     public function toArray(): array
     {
-        return ['form_params' => $this->getMessage()];
+        return $this->getMessage();
     }
 
     /**

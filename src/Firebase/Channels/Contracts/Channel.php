@@ -3,8 +3,6 @@
 
 namespace Piscibus\Notifier\Firebase\Channels\Contracts;
 
-use Illuminate\Notifications\Notification;
-
 /**
  * Interface Channel
  * @package Piscibus\Notifier\Channels\Contracts
@@ -13,7 +11,7 @@ interface Channel
 {
     /**
      * @param FcmNotifiable $notifiable
-     * @param Notification $notification
+     * @param FcmNotification $notification
      */
-    public function send(FcmNotifiable $notifiable, Notification $notification): void;
+    public function send(FcmNotifiable $notifiable, FcmNotification $notification): void;
 }

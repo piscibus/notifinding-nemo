@@ -3,6 +3,7 @@
 
 namespace Piscibus\Notifier\Firebase\Channels;
 
+use Piscibus\Notifier\Firebase\Channels\Contracts\Channel;
 use Piscibus\Notifier\Firebase\Channels\Contracts\FcmNotifiable;
 use Piscibus\Notifier\Firebase\Channels\Contracts\FcmNotification;
 use Piscibus\Notifier\Firebase\Clients\FcmClient;
@@ -11,7 +12,7 @@ use Piscibus\Notifier\Firebase\Clients\FcmClient;
  * Class FcmChannel
  * @package Piscibus\Notifier\Channels
  */
-class FcmChannel
+class FcmChannel implements Channel
 {
     /**
      * @inheritDoc

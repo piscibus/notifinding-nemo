@@ -42,6 +42,8 @@ class ExpoClient
      */
     public function send(Message $message): ResponseInterface
     {
-        return $this->client->post(self::API_URI, $message->toArray());
+        return $this->client->post(self::API_URI, [
+            'form_params' => $message->toArray(),
+        ]);
     }
 }

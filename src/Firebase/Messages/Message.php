@@ -64,10 +64,7 @@ class Message implements MessageInterface
      */
     public function toArray(): array
     {
-        $message = $this->getMessage();
-        $body = \GuzzleHttp\json_encode($message);
-
-        return compact('body');
+        return  $this->getMessage();
     }
 
     /**

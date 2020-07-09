@@ -52,7 +52,7 @@ class MessageTest extends TestCase
             'data' => $data,
             'notification' => $notification->toArray(),
         ];
-        $expected = ['body' => json_encode($expectedBody)];
+        $expected = $expectedBody;
         $actual = $message->toArray();
         $this->assertEquals($actual, $expected);
     }

@@ -35,15 +35,6 @@ class FcmClient
         $headers = $this->getHeaders();
         $this->client = new Client(compact('headers'));
     }
-    
-    /**
-     * @param MessageInterface $message
-     * @return ResponseInterface
-     */
-    public function send(MessageInterface $message): ResponseInterface
-    {
-        return $this->client->post(self::API_URI, $message->toArray());
-    }
 
     /**
      * @return array
@@ -54,5 +45,16 @@ class FcmClient
             'Authorization' => sprintf("key=%s", $this->key),
             'Content-Type' => 'application/json',
         ];
+    }
+
+    /**
+     * @param MessageInterface $message
+     * @return ResponseInterface
+     */
+    public function send(MessageInterface $message): ResponseInterface
+    {
+        return $this->client->post(self::API_URI, [
+            'form_params' => $message->toArray(),
+        ]);
     }
 }
